@@ -7,14 +7,21 @@ output "account_id" {
   value       = module.watsonx_governance.account_id
 }
 
+output "id" {
+  description = "ID of the watsonx Governance instance."
+  value       = module.watsonx_governance.id
+}
+
 output "crn" {
   description = "CRN of the watsonx Governance instance"
   value       = module.watsonx_governance.crn
 }
+
 output "guid" {
   description = "GUID of the watsonx Governance instance"
   value       = module.watsonx_governance.guid
 }
+
 output "name" {
   description = "Name of the watsonx Governance instance"
   value       = module.watsonx_governance.name
@@ -24,7 +31,18 @@ output "resource_group_id" {
   description = "The resource group ID to provision the watsonx Governance instance."
   value       = module.resource_group.resource_group_id
 }
+
 output "resource_group_name" {
   description = "The resource group name to provision the watsonx Governance instance."
   value       = module.resource_group.resource_group_name
+}
+
+output "plan_id" {
+  description = "Plan ID of the existing watsonx Governance instance."
+  value       = module.watsonx_governance.plan_id
+}
+
+output "dashboard_url" {
+  description = "Dashboard URL of the existing watsonx Governance instance."
+  value       = module.watsonx_governance.dashboard_url
 }
