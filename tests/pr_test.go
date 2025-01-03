@@ -65,7 +65,6 @@ func setupOptions(t *testing.T, prefix string, exampleDir string) *testhelper.Te
 }
 
 func TestRunBasicExample(t *testing.T) {
-	t.Parallel()
 
 	options := setupOptions(t, "wx-gov", basicExampleDir)
 
@@ -75,7 +74,6 @@ func TestRunBasicExample(t *testing.T) {
 }
 
 func TestRunUpgradeExample(t *testing.T) {
-	t.Parallel()
 
 	options := setupOptions(t, "wx-gov-upg", basicExampleDir)
 
@@ -87,7 +85,6 @@ func TestRunUpgradeExample(t *testing.T) {
 }
 
 func TestRunExistingResourcesExample(t *testing.T) {
-	t.Parallel()
 
 	// Provision Watsonx Governance instance
 	prefix := fmt.Sprintf("ex-gov-%s", strings.ToLower(random.UniqueId()))
