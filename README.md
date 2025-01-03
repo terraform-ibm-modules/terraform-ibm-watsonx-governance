@@ -47,42 +47,35 @@ https://terraform-ibm-modules.github.io/documentation/#/implementation-guideline
 <!-- Replace this heading with the name of the root level module (the repo name) -->
 ## terraform-ibm-watsonx-governance
 
+This module supports provisioning the watsonx Governance instance with a selectable service plan.
+
 ### Usage
 
-<!--
-Add an example of the use of the module in the following code block.
-
-Use real values instead of "var.<var_name>" or other placeholder values
-unless real values don't help users know what to change.
--->
-
 ```hcl
+module "watsonx_governance" {
+  source                = "terraform-ibm-modules/watsonx-governance/ibm"
+  watsonx_governance_name = "watsonx-governance"
+  resource_group_id     = module.resource_group.resource_group_id
+}
 
 ```
 
 ### Required access policies
 
-<!-- PERMISSIONS REQUIRED TO RUN MODULE
-If this module requires permissions, uncomment the following block and update
-the sample permissions, following the format.
-Replace the 'Sample IBM Cloud' service and roles with applicable values.
-The required information can usually be found in the services official
-IBM Cloud documentation.
-To view all available service permissions, you can go in the
-console at Manage > Access (IAM) > Access groups and click into an existing group
-(or create a new one) and in the 'Access' tab click 'Assign access'.
--->
-
-<!--
 You need the following permissions to run this module:
 
-- Service
-    - **Resource group only**
-        - `Viewer` access on the specific resource group
-    - **Sample IBM Cloud** service
+* Account Management
+  * **Resource Group**
+        - `Viewer` role
+* IAM Services
+  * **watsonx.governance** service
         - `Editor` platform access
-        - `Manager` service access
--->
+
+To attach access management tags to resources in this module, you need the following permissions.
+
+- IAM Services
+    - **Tagging** service
+        - `Administrator` platform access
 
 <!-- NO PERMISSIONS FOR MODULE
 If no permissions are required for the module, uncomment the following
