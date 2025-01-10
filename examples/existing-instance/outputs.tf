@@ -26,13 +26,3 @@ output "guid" {
   description = "GUID of the existing watsonx Governance instance"
   value       = module.existing_watsonx_governance_instance.guid
 }
-
-output "plan_id" {
-  description = "Plan ID of the existing watsonx Governance instance."
-  value       = module.existing_watsonx_governance_instance.plan_id
-}
-
-output "dashboard_url" {
-  description = "Dashboard URL of the existing watsonx Governance instance."
-  value       = module.existing_watsonx_governance_instance.dashboard_url
-}

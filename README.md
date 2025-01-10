@@ -1,5 +1,5 @@
 <!-- Update this title with a descriptive name. Use sentence case. -->
-# IBM Watson Governance module
+# IBM Watsonx Governance module
 
 <!--
 Update status and "latest release" badges:
@@ -20,9 +20,9 @@ For information, see "Module names and descriptions" at
 https://terraform-ibm-modules.github.io/documentation/#/implementation-guidelines?id=module-names-and-descriptions
 -->
 
-The IBM watsonx Governance Terraform module is designed to automate the deployment and configuration of IBM Watson Governance, which is a toolkit which seamlessly integrates with your existing systems to automate and accelerate responsible AI workflows to help save time, reduce costs and comply with regulations.
+The IBM watsonx Governance Terraform module is designed to automate the deployment and configuration of IBM Watsonx Governance, which is a toolkit which seamlessly integrates with your existing systems to automate and accelerate responsible AI workflows to help save time, reduce costs and comply with regulations.
 
-For further information on IBM Watson Governance, including supported features, plans, and regions, please refer the official Watson Governance [documentation](https://dataplatform.cloud.ibm.com/docs/content/svc-welcome/aiopenscale.html?context=wx)
+For further information on IBM Watsonx Governance, including supported features, plans, and regions, please refer the official Watsonx Governance [documentation](https://dataplatform.cloud.ibm.com/docs/content/svc-welcome/aiopenscale.html?context=wx)
 
 <!-- The following content is automatically populated by the pre-commit hook -->
 <!-- BEGIN OVERVIEW HOOK -->
@@ -68,7 +68,7 @@ You need the following permissions to run this module:
   * **Resource Group**
         - `Viewer` role
 * IAM Services
-  * **watsonx.governance** service
+  * **watsonx Governance** service
         - `Editor` platform access
 
 To attach access management tags to resources in this module, you need the following permissions.
@@ -113,13 +113,12 @@ statement instead the previous block.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_access_tags"></a> [access\_tags](#input\_access\_tags) | A list of access tags to apply to the watsonx Governance instance. For more information, see https://cloud.ibm.com/docs/account?topic=account-access-tags-tutorial. | `list(string)` | `[]` | no |
-| <a name="input_existing_watsonx_governance_instance_crn"></a> [existing\_watsonx\_governance\_instance\_crn](#input\_existing\_watsonx\_governance\_instance\_crn) | CRN of the an existing watsonx.governance instance. | `string` | `null` | no |
+| <a name="input_existing_watsonx_governance_instance_crn"></a> [existing\_watsonx\_governance\_instance\_crn](#input\_existing\_watsonx\_governance\_instance\_crn) | The CRN of an existing watsonx Governance instance. | `string` | `null` | no |
+| <a name="input_plan"></a> [plan](#input\_plan) | The plan that is required to provision the watsonx Governance instance. Possible values are: lite, essentials. | `string` | `"lite"` | no |
 | <a name="input_region"></a> [region](#input\_region) | Region where watsonx Governance instance will be provisioned. Required if creating a new instance. | `string` | `"us-south"` | no |
 | <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The resource group ID where the watsonx Governance instance will be grouped. Required when creating a new instance. | `string` | `null` | no |
 | <a name="input_resource_tags"></a> [resource\_tags](#input\_resource\_tags) | Optional list of tags to describe the watsonx Governance instance created by the module. | `list(string)` | `[]` | no |
-| <a name="input_service_endpoints"></a> [service\_endpoints](#input\_service\_endpoints) | Types of the service endpoints that can be set to a watsonx Governance instance. Possible values are : 'public', 'private' or 'public-and-private'. | `string` | `"public-and-private"` | no |
 | <a name="input_watsonx_governance_name"></a> [watsonx\_governance\_name](#input\_watsonx\_governance\_name) | The name of the watsonx Governance instance. Required if creating a new instance. | `string` | `null` | no |
-| <a name="input_watsonx_governance_plan"></a> [watsonx\_governance\_plan](#input\_watsonx\_governance\_plan) | The plan used to provision the watsonx.governance instance. The available plans depend on the region where you are provisioning the service from the IBM Cloud catalog. | `string` | `"lite"` | no |
 
 ### Outputs
 

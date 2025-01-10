@@ -27,13 +27,10 @@ resource "ibm_resource_instance" "watsonx_governance_instance" {
   count             = var.existing_watsonx_governance_instance_crn != null ? 0 : 1
   name              = var.watsonx_governance_name
   service           = "aiopenscale"
-  plan              = var.watsonx_governance_plan
+  plan              = var.plan
   location          = var.region
   resource_group_id = var.resource_group_id
   tags              = var.resource_tags
-  parameters = {
-    service-endpoints = var.service_endpoints
-  }
 
   timeouts {
     create = "15m"

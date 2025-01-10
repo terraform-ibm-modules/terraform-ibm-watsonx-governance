@@ -58,29 +58,24 @@ variable "watsonx_governance_name" {
 
 variable "existing_watsonx_governance_instance_crn" {
   default     = null
-  description = "CRN of the an existing watsonx.governance instance."
+  description = "The CRN of an existing watsonx Governance instance."
   type        = string
 }
 
-variable "watsonx_governance_plan" {
-  default     = "lite"
-  description = "The plan used to provision the watsonx.governance instance. The available plans depend on the region where you are provisioning the service from the IBM Cloud catalog."
+variable "plan" {
+  description = "The plan that is required to provision the watsonx Governance instance. Possible values are: lite, essentials."
   type        = string
+  default     = "lite"
+
+  validation {
+    condition     = var.existing_watsonx_governance_instance_crn != null || var.plan != null
+    error_message = "watsonx Governance plan must be provided when creating a new instance."
+  }
   validation {
     condition = anytrue([
-      var.watsonx_governance_plan == "lite",
-      var.watsonx_governance_plan == "essentials",
-    ])
-    error_message = "You must use a lite or essential plan. Learn more. "
-  }
-}
-
-variable "service_endpoints" {
-  description = "Types of the service endpoints that can be set to a watsonx Governance instance. Possible values are : 'public', 'private' or 'public-and-private'."
-  type        = string
-  default     = "public-and-private"
-  validation {
-    condition     = contains(["public", "public-and-private", "private"], var.service_endpoints)
-    error_message = "The specified service endpoint is not valid. Supported options are 'public', 'private', 'public-and-private'."
+      var.plan == "lite",
+      var.plan == "essentials",
+    ]) || var.existing_watsonx_governance_instance_crn != null
+    error_message = "A new watsonx Governance instance requires a 'lite', 'essentials' plan. [Learn more](https://dataplatform.cloud.ibm.com/docs/content/wsj/model/wos-plan-options.html?context=wx&audience=wdp)."
   }
 }
