@@ -9,12 +9,12 @@ variable "ibmcloud_api_key" {
 }
 
 variable "existing_watsonx_governance_instance_crn" {
-  description = "The CRN of an existing Watsonx Governance instance."
+  description = "The CRN of an existing watsonx.governance instance."
   type        = string
 }
 
 variable "access_tags" {
   type        = list(string)
-  description = "Optional list of access management tags to add to the Watsonx Governance instance"
+  description = "Optional list of access management tags to add to the watsonx.governance instance"
   default     = []
 }

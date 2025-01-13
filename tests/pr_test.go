@@ -86,7 +86,7 @@ func TestRunUpgradeExample(t *testing.T) {
 
 func TestRunExistingResourcesExample(t *testing.T) {
 
-	// Provision Watsonx Governance instance
+	// Provision watsonx.governance instance
 	prefix := fmt.Sprintf("ex-gov-%s", strings.ToLower(random.UniqueId()))
 	realTerraformDir := ".."
 	tempTerraformDir, _ := files.CopyTerraformFolderToTemp(realTerraformDir, fmt.Sprintf(prefix+"-%s", strings.ToLower(random.UniqueId())))
