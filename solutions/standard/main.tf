@@ -14,11 +14,11 @@ module "resource_group" {
 #######################################################################################################################
 
 module "watson_governance" {
-  source                = "../../"
-  region                = var.region
-  plan                  = var.plan
-  resource_group_id     = module.resource_group.resource_group_id
+  source                  = "../../"
+  region                  = var.region
+  plan                    = var.plan
+  resource_group_id       = module.resource_group.resource_group_id
   watsonx_governance_name = var.prefix != null ? "${var.prefix}-${var.name}" : var.name
-  access_tags           = var.access_tags
-  resource_tags         = var.resource_tags
+  access_tags             = var.access_tags
+  resource_tags           = var.resource_tags
 }
