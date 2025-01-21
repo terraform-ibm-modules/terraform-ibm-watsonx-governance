@@ -1,0 +1,145 @@
+{
+  "products": [
+    {
+      "name": "deploy-arch-ibm-watson-governance",
+      "label": "Watson Governance",
+      "product_kind": "solution",
+      "tags": [
+        "ibm_created",
+        "target_terraform",
+        "terraform",
+        "ai",
+        "aiopenscale",
+        "solution"
+      ],
+      "keywords": [
+        "Watson Governance",
+        "governance",
+        "IaC",
+        "infrastructure as code",
+        "terraform",
+        "solution",
+        "ai"
+      ],
+      "short_description": "Creates and configures an instance of IBM Watson Governance.",
+      "long_description": "This architecture supports creating and configuring an instance of Watson Governance.",
+      "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/blob/main/README.md",
+      "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/images/watson-governance.svg",
+      "provider_name": "IBM",
+      "features": [
+        {
+          "title": "Creates an instance of IBM Watson Governance",
+          "description": "Creates and configures an IBM Watson Governance instance."
+        }
+      ],
+      "flavors": [
+        {
+          "label": "Standard",
+          "name": "standard",
+          "install_type": "fullstack",
+          "working_directory": "solutions/standard",
+          "compliance": {
+            "authority": "scc-v3",
+            "profiles": [
+              {
+                "profile_name": "IBM Cloud Framework for AI Security Guardrails 2.0",
+                "profile_version": "1.1.0"
+              }
+            ]},
+          "iam_permissions": [
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "all-account-management-services"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "aiopenscale"
+            }
+          ],
+          "architecture": {
+            "descriptions": "This architecture creates an instance of IBM Watson Governance.",
+            "features": [
+              {
+                "title": " Creates an instance of Watson Governance",
+                "description": "This architecture creates an instance of IBM Watson Governance. It accepts or creates a resource group."
+              }
+            ],
+            "diagrams": [
+              {
+                "diagram": {
+                  "caption": "Watson Governance on IBM Cloud",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/reference-architecture/deployable-architecture-watson-governance.svg",
+                  "type": "image/svg+xml"
+                },
+                "description": "This architecture supports creating and configuring an instance of Watson Governance."
+              }
+            ]
+          },
+          "configuration": [
+              {
+                "key": "ibmcloud_api_key",
+                "required": true,
+                "type": "password"
+              },
+              {
+                "key": "use_existing_resource_group"
+              },
+              {
+                "key": "resource_group_name"
+              },
+              {
+                "key": "prefix",
+                "required": true
+              },
+              {
+                "key": "name"
+              },
+              {
+                "key": "region",
+                "required": true,
+                "default_value": "us-south",
+                "options": [
+                  {
+                    "displayname": "Dallas (us-south)",
+                    "value": "us-south"
+                  },
+                  {
+                    "displayname": "Frankfurt (eu-de)",
+                    "value": "eu-de"
+                  },
+                  {
+                    "displayname": "Sydney (au-syd)",
+                    "value": "au-syd"
+                  }
+                ]
+              },
+              {
+                "key": "plan",
+                "default_value": "lite",
+                "options": [
+                  {
+                    "displayname": "lite",
+                    "value": "lite"
+                  },
+                  {
+                    "displayname": "Essentials",
+                    "value": "essentials"
+                  }
+                ]
+              },
+              {
+                "key": "resource_tags"
+              },
+              {
+                "key": "access_tags"
+              }
+            ]
+        }
+      ]
+    }
+  ]
+}
