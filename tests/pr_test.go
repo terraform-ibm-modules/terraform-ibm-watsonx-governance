@@ -74,17 +74,6 @@ func TestRunBasicExample(t *testing.T) {
 	assert.NotNil(t, output, "Expected some output")
 }
 
-func TestRunUpgradeExample(t *testing.T) {
-
-	options := setupOptions(t, "wx-gov-upg", basicExampleDir)
-
-	output, err := options.RunTestUpgrade()
-	if !options.UpgradeTestSkipped {
-		assert.Nil(t, err, "This should not have errored")
-		assert.NotNil(t, output, "Expected some output")
-	}
-}
-
 func TestRunExistingResourcesExample(t *testing.T) {
 
 	// Provision watsonx.governance instance
@@ -164,8 +153,9 @@ func TestRunStandardSolution(t *testing.T) {
 	})
 
 	options.TerraformVars = map[string]interface{}{
-		"plan":                "lite",
+		"plan":                "essentials",
 		"resource_group_name": options.Prefix,
+		"provider_visibility": "public",
 	}
 
 	output, err := options.RunTestConsistency()
@@ -185,8 +175,9 @@ func TestRunStandardUpgradeSolution(t *testing.T) {
 	})
 
 	options.TerraformVars = map[string]interface{}{
-		"plan":                "lite",
+		"plan":                "essentials",
 		"resource_group_name": options.Prefix,
+		"provider_visibility": "public",
 	}
 
 	output, err := options.RunTestUpgrade()

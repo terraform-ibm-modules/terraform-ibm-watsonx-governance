@@ -1,19 +1,20 @@
 {
   "products": [
     {
-      "name": "deploy-arch-ibm-watson-governance",
-      "label": "Watson Governance",
+      "name": "deploy-arch-ibm-watsonx-governance",
+      "label": "watsonx Governance",
       "product_kind": "solution",
       "tags": [
         "ibm_created",
         "target_terraform",
         "terraform",
+        "watsonx-governance",
         "ai",
         "aiopenscale",
         "solution"
       ],
       "keywords": [
-        "Watson Governance",
+        "watsonx Governance",
         "governance",
         "IaC",
         "infrastructure as code",
@@ -21,15 +22,15 @@
         "solution",
         "ai"
       ],
-      "short_description": "Creates and configures an instance of IBM Watson Governance.",
-      "long_description": "This architecture supports creating and configuring an instance of Watson Governance.",
+      "short_description": "Creates and configures an instance of IBM watsonx Governance.",
+      "long_description": "This architecture supports creating and configuring an instance of watsonx Governance.",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/blob/main/README.md",
-      "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/images/watson-governance.svg",
+      "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/images/watsonx-governance.svg",
       "provider_name": "IBM",
       "features": [
         {
-          "title": "Creates an instance of IBM Watson Governance",
-          "description": "Creates and configures an IBM Watson Governance instance."
+          "title": "Creates an instance of IBM watsonx Governance",
+          "description": "Creates and configures an IBM watsonx Governance instance."
         }
       ],
       "flavors": [
@@ -61,21 +62,21 @@
             }
           ],
           "architecture": {
-            "descriptions": "This architecture creates an instance of IBM Watson Governance.",
+            "descriptions": "This architecture creates an instance of IBM watsonx Governance.",
             "features": [
               {
-                "title": " Creates an instance of Watson Governance",
-                "description": "This architecture creates an instance of IBM Watson Governance. It accepts or creates a resource group."
+                "title": " Creates an instance of watsonx Governance",
+                "description": "This architecture creates an instance of IBM watsonx Governance. It accepts or creates a resource group."
               }
             ],
             "diagrams": [
               {
                 "diagram": {
-                  "caption": "Watson Governance on IBM Cloud",
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/reference-architecture/deployable-architecture-watson-governance.svg",
+                  "caption": "watsonx Governance on IBM Cloud",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/reference-architecture/deployable-architecture-watsonx-governance.svg",
                   "type": "image/svg+xml"
                 },
-                "description": "This architecture supports creating and configuring an instance of Watson Governance."
+                "description": "This architecture supports creating and configuring an instance of watsonx Governance."
               }
             ]
           },
@@ -84,6 +85,23 @@
                 "key": "ibmcloud_api_key",
                 "required": true,
                 "type": "password"
+              },
+              {
+                "key": "provider_visibility",
+                "options": [
+                  {
+                    "displayname": "private",
+                    "value": "private"
+                  },
+                  {
+                    "displayname": "public",
+                    "value": "public"
+                  },
+                  {
+                    "displayname": "public-and-private",
+                    "value": "public-and-private"
+                  }
+                ]
               },
               {
                 "key": "use_existing_resource_group"
@@ -122,7 +140,7 @@
                 "default_value": "lite",
                 "options": [
                   {
-                    "displayname": "lite",
+                    "displayname": "Lite",
                     "value": "lite"
                   },
                   {
