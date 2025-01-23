@@ -33,7 +33,7 @@ variable "resource_group_name" {
 variable "prefix" {
   type        = string
   description = "Prefix to add to all resources created by this solution."
-  default     = null
+  default     = "wx-gov"
 }
 
 variable "name" {
