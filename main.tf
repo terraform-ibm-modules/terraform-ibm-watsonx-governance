@@ -1,5 +1,5 @@
 ########################################################################################################################
-# watsonx.governance
+# watsonx Governance
 ########################################################################################################################
 locals {
   account_id                       = var.existing_watsonx_governance_instance_crn != null ? module.crn_parser[0].account_id : ibm_resource_instance.watsonx_governance_instance[0].account_id

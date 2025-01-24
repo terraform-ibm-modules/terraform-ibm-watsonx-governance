@@ -1,0 +1,163 @@
+{
+  "products": [
+    {
+      "name": "deploy-arch-ibm-watsonx-governance",
+      "label": "watsonx Governance",
+      "product_kind": "solution",
+      "tags": [
+        "ibm_created",
+        "target_terraform",
+        "terraform",
+        "watsonx-governance",
+        "ai",
+        "aiopenscale",
+        "solution"
+      ],
+      "keywords": [
+        "watsonx Governance",
+        "governance",
+        "IaC",
+        "infrastructure as code",
+        "terraform",
+        "solution",
+        "ai"
+      ],
+      "short_description": "Creates and configures an instance of IBM watsonx Governance.",
+      "long_description": "This architecture supports creating and configuring an instance of watsonx Governance.",
+      "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/blob/main/README.md",
+      "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/images/watsonx-governance.svg",
+      "provider_name": "IBM",
+      "features": [
+        {
+          "title": "Creates an instance of IBM watsonx Governance",
+          "description": "Creates and configures an IBM watsonx Governance instance."
+        }
+      ],
+      "flavors": [
+        {
+          "label": "Standard",
+          "name": "standard",
+          "install_type": "fullstack",
+          "working_directory": "solutions/standard",
+          "compliance": {
+            "authority": "scc-v3",
+            "profiles": [
+              {
+                "profile_name": "IBM Cloud Framework for AI Security Guardrails 2.0",
+                "profile_version": "1.1.0"
+              }
+            ]},
+          "iam_permissions": [
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "all-account-management-services"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "aiopenscale"
+            }
+          ],
+          "architecture": {
+            "descriptions": "This architecture creates an instance of IBM watsonx Governance.",
+            "features": [
+              {
+                "title": " Creates an instance of watsonx Governance",
+                "description": "This architecture creates an instance of IBM watsonx Governance. It accepts or creates a resource group."
+              }
+            ],
+            "diagrams": [
+              {
+                "diagram": {
+                  "caption": "watsonx Governance on IBM Cloud",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/reference-architecture/deployable-architecture-watsonx-governance.svg",
+                  "type": "image/svg+xml"
+                },
+                "description": "This architecture supports creating and configuring an instance of watsonx Governance."
+              }
+            ]
+          },
+          "configuration": [
+              {
+                "key": "ibmcloud_api_key",
+                "required": true,
+                "type": "password"
+              },
+              {
+                "key": "provider_visibility",
+                "options": [
+                  {
+                    "displayname": "private",
+                    "value": "private"
+                  },
+                  {
+                    "displayname": "public",
+                    "value": "public"
+                  },
+                  {
+                    "displayname": "public-and-private",
+                    "value": "public-and-private"
+                  }
+                ]
+              },
+              {
+                "key": "use_existing_resource_group"
+              },
+              {
+                "key": "resource_group_name"
+              },
+              {
+                "key": "prefix",
+                "required": true
+              },
+              {
+                "key": "name"
+              },
+              {
+                "key": "region",
+                "required": true,
+                "default_value": "us-south",
+                "options": [
+                  {
+                    "displayname": "Dallas (us-south)",
+                    "value": "us-south"
+                  },
+                  {
+                    "displayname": "Frankfurt (eu-de)",
+                    "value": "eu-de"
+                  },
+                  {
+                    "displayname": "Sydney (au-syd)",
+                    "value": "au-syd"
+                  }
+                ]
+              },
+              {
+                "key": "plan",
+                "default_value": "lite",
+                "options": [
+                  {
+                    "displayname": "Lite",
+                    "value": "lite"
+                  },
+                  {
+                    "displayname": "Essentials",
+                    "value": "essentials"
+                  }
+                ]
+              },
+              {
+                "key": "resource_tags"
+              },
+              {
+                "key": "access_tags"
+              }
+            ]
+        }
+      ]
+    }
+  ]
+}
