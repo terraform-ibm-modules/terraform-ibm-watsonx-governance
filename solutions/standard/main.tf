@@ -13,7 +13,7 @@ locals {
 module "resource_group" {
   source                       = "terraform-ibm-modules/resource-group/ibm"
   version                      = "1.1.6"
-  resource_group_name          = !var.use_existing_resource_group ? (var.prefix != null ? "${var.prefix}-${var.resource_group_name}" : var.resource_group_name) : null
+  resource_group_name          = var.use_existing_resource_group ? null : try("${local.prefix}-${var.resource_group_name}", var.resource_group_name)
   existing_resource_group_name = var.use_existing_resource_group ? var.resource_group_name : null
 }
 
