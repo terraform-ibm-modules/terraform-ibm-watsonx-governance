@@ -4,7 +4,7 @@ offerings:
   - name: deploy-arch-ibm-watsonx-governance
     kind: solution
     catalog_id: 7df1e4ca-d54c-4fd0-82ce-3d13247308cd
-    offering_id: #to add
+    offering_id: 5d7c4272-dc45-49e6-8ef3-7f86af1e30d7
     variations:
       - name: standard
         mark_ready: true
