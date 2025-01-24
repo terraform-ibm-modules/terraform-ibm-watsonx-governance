@@ -26,7 +26,7 @@ module "watsonx_governance" {
   region                  = var.region
   plan                    = var.plan
   resource_group_id       = module.resource_group.resource_group_id
-  watsonx_governance_name = local.prefix != null ? "${local.prefix}-${var.name}" : var.name
+  watsonx_governance_name = try("${local.prefix}-${var.name}", var.name)
   access_tags             = var.access_tags
   resource_tags           = var.resource_tags
 }
