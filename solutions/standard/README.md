@@ -1,9 +1,9 @@
-# IBM watsonx Governance
+# IBM watsonx.governance
 
-This architecture creates an instance of IBM watsonx Governance and supports provisioning of the following resources:
+This architecture creates an instance of IBM watsonx.governance and supports provisioning of the following resources:
 
 - A `resource group` , if one is not passed in.
-- A `watsonx Governance` instance.
+- A `watsonx.governance` instance.
 
 ![watsonx-governance-deployable-architecture](../../reference-architecture/deployable-architecture-watsonx-governance.svg)
 
