@@ -20,6 +20,16 @@ output "name" {
   value       = module.watsonx_governance.name
 }
 
+output "plan_id" {
+  description = "Plan ID of the watsonx Orchestrate instance."
+  value       = module.watsonx_governance.plan_id
+}
+
+output "dashboard_url" {
+  description = "Dashboard URL of the watsonx Orchestrate instance."
+  value       = module.watsonx_governance.dashboard_url
+}
+
 output "resource_group_id" {
   description = "The resource group ID to provision the watsonx Governance instance."
   value       = module.resource_group.resource_group_id
