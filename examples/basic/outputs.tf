@@ -21,12 +21,12 @@ output "name" {
 }
 
 output "plan_id" {
-  description = "Plan ID of the watsonx Orchestrate instance."
+  description = "Plan ID of the watsonx.governance instance."
   value       = module.watsonx_governance.plan_id
 }
 
 output "dashboard_url" {
-  description = "Dashboard URL of the watsonx Orchestrate instance."
+  description = "Dashboard URL of the watsonx.governance instance."
   value       = module.watsonx_governance.dashboard_url
 }
 
