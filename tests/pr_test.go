@@ -142,7 +142,6 @@ func TestRunExistingResourcesExample(t *testing.T) {
 }
 
 func TestRunStandardSolution(t *testing.T) {
-	t.Parallel()
 
 	options := testhelper.TestOptionsDefault(&testhelper.TestOptions{
 		Testing:       t,
@@ -164,7 +163,6 @@ func TestRunStandardSolution(t *testing.T) {
 }
 
 func TestRunStandardUpgradeSolution(t *testing.T) {
-	t.Parallel()
 
 	options := testhelper.TestOptionsDefault(&testhelper.TestOptions{
 		Testing:       t,
