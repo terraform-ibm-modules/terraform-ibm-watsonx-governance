@@ -2,7 +2,7 @@
   "products": [
     {
       "name": "deploy-arch-ibm-watsonx-governance",
-      "label": "watsonx Governance",
+      "label": "Cloud automation for watsonx.governance",
       "product_kind": "solution",
       "tags": [
         "ibm_created",
@@ -14,7 +14,7 @@
         "solution"
       ],
       "keywords": [
-        "watsonx Governance",
+        "watsonx.governance",
         "governance",
         "IaC",
         "infrastructure as code",
@@ -22,15 +22,15 @@
         "solution",
         "ai"
       ],
-      "short_description": "Creates and configures an instance of IBM watsonx Governance.",
-      "long_description": "This architecture supports creating and configuring an instance of watsonx Governance.",
+      "short_description": "Creates and configures an instance of IBM watsonx.governance.",
+      "long_description": "This architecture supports creating and configuring an instance of watsonx.governance.",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/blob/main/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/images/watsonx-governance.svg",
       "provider_name": "IBM",
       "features": [
         {
-          "title": "Creates an instance of IBM watsonx Governance",
-          "description": "Creates and configures an IBM watsonx Governance instance."
+          "title": "Creates an instance of IBM watsonx.governance",
+          "description": "Creates and configures an IBM watsonx.governance instance."
         }
       ],
       "flavors": [
@@ -62,21 +62,21 @@
             }
           ],
           "architecture": {
-            "descriptions": "This architecture creates an instance of IBM watsonx Governance.",
+            "descriptions": "This architecture creates an instance of IBM watsonx.governance.",
             "features": [
               {
-                "title": " Creates an instance of watsonx Governance",
-                "description": "This architecture creates an instance of IBM watsonx Governance. It accepts or creates a resource group."
+                "title": " Creates an instance of watsonx.governance",
+                "description": "This architecture creates an instance of IBM watsonx.governance. It accepts or creates a resource group."
               }
             ],
             "diagrams": [
               {
                 "diagram": {
-                  "caption": "watsonx Governance on IBM Cloud",
+                  "caption": "watsonx.governance on IBM Cloud",
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/reference-architecture/deployable-architecture-watsonx-governance.svg",
                   "type": "image/svg+xml"
                 },
-                "description": "This architecture supports creating and configuring an instance of watsonx Governance."
+                "description": "This architecture supports creating and configuring an instance of watsonx.governance."
               }
             ]
           },
@@ -111,7 +111,8 @@
               },
               {
                 "key": "prefix",
-                "required": true
+                "required": true,
+                "description": "Prefix to add to all resources created by this solution. To not use any prefix value, you can enter the string `__NULL__`."
               },
               {
                 "key": "name"

@@ -76,7 +76,7 @@ func TestRunBasicExample(t *testing.T) {
 
 func TestRunExistingResourcesExample(t *testing.T) {
 
-	// Provision watsonx Governance instance
+	// Provision watsonx.governance instance
 	prefix := fmt.Sprintf("ex-gov-%s", strings.ToLower(random.UniqueId()))
 	realTerraformDir := ".."
 	tempTerraformDir, _ := files.CopyTerraformFolderToTemp(realTerraformDir, fmt.Sprintf(prefix+"-%s", strings.ToLower(random.UniqueId())))
@@ -142,7 +142,6 @@ func TestRunExistingResourcesExample(t *testing.T) {
 }
 
 func TestRunStandardSolution(t *testing.T) {
-	t.Parallel()
 
 	options := testhelper.TestOptionsDefault(&testhelper.TestOptions{
 		Testing:       t,
@@ -164,7 +163,6 @@ func TestRunStandardSolution(t *testing.T) {
 }
 
 func TestRunStandardUpgradeSolution(t *testing.T) {
-	t.Parallel()
 
 	options := testhelper.TestOptionsDefault(&testhelper.TestOptions{
 		Testing:       t,
