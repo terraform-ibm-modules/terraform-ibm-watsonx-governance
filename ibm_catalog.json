@@ -8,9 +8,8 @@
         "ibm_created",
         "target_terraform",
         "terraform",
-        "watsonx-governance",
+        "watson",
         "ai",
-        "aiopenscale",
         "solution"
       ],
       "keywords": [
