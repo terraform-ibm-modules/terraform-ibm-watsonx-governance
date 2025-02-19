@@ -57,17 +57,20 @@ func setupOptions(t *testing.T, prefix string, exampleDir string) *testhelper.Te
 		TerraformDir:  exampleDir,
 		Prefix:        prefix,
 		ResourceGroup: resourceGroup,
-		TerraformVars: map[string]interface{}{
-			"access_tags": permanentResources["accessTags"],
-			"region":      validRegions[rand.Intn(len(validRegions))],
-		},
 	})
+	options.TerraformVars = map[string]interface{}{
+		"access_tags":    permanentResources["accessTags"],
+		"region":         validRegions[rand.Intn(len(validRegions))],
+		"prefix":         options.Prefix,
+		"resource_group": resourceGroup,
+		"resource_tags":  options.Tags,
+	}
 	return options
 }
 
 func TestRunBasicExample(t *testing.T) {
 
-	options := setupOptions(t, "wx-gov", basicExampleDir)
+	options := setupOptions(t, "wxgo-basic", basicExampleDir)
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
@@ -147,7 +150,7 @@ func TestRunStandardSolution(t *testing.T) {
 		Testing:       t,
 		TerraformDir:  standardSolutionTerraformDir,
 		Region:        validRegions[rand.Intn(len(validRegions))],
-		Prefix:        "governance-st-da",
+		Prefix:        "wxgo-da",
 		ResourceGroup: resourceGroup,
 	})
 
@@ -155,6 +158,8 @@ func TestRunStandardSolution(t *testing.T) {
 		"plan":                "essentials",
 		"resource_group_name": options.Prefix,
 		"provider_visibility": "public",
+		"prefix":              options.Prefix,
+		"region":              options.Region,
 	}
 
 	output, err := options.RunTestConsistency()
@@ -168,7 +173,7 @@ func TestRunStandardUpgradeSolution(t *testing.T) {
 		Testing:       t,
 		TerraformDir:  standardSolutionTerraformDir,
 		Region:        validRegions[rand.Intn(len(validRegions))],
-		Prefix:        "governance-st-da-upg",
+		Prefix:        "wxgo-da-upg",
 		ResourceGroup: resourceGroup,
 	})
 
@@ -176,6 +181,8 @@ func TestRunStandardUpgradeSolution(t *testing.T) {
 		"plan":                "essentials",
 		"resource_group_name": options.Prefix,
 		"provider_visibility": "public",
+		"prefix":              options.Prefix,
+		"region":              options.Region,
 	}
 
 	output, err := options.RunTestUpgrade()
