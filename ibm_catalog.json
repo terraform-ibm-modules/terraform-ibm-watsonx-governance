@@ -2,7 +2,7 @@
   "products": [
     {
       "name": "deploy-arch-ibm-watsonx-governance",
-      "label": "Cloud automation for watsonx.governance",
+      "label": "[Add-ons Beta] Cloud automation for watsonx.governance",
       "product_kind": "solution",
       "tags": [
         "ibm_created",
