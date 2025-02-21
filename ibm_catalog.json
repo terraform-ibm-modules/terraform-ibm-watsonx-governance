@@ -174,6 +174,11 @@
                   "version_input": "resource_group_name"
                 },
                 {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": true
+                },
+                {
                   "version_input": "use_existing_resource_group",
                   "value": true
                 }
@@ -181,6 +186,32 @@
               "optional": true,
               "on_by_default": true,
               "version": "^v1.18.0"
+            },
+            {
+              "name": "testing-deploy-arch-ibm-observability",
+              "id": "daf2cf91-2384-4205-b7f4-621299a4896d-global",
+              "version": "^1.2.2",
+              "flavors": [
+                "standard"
+              ],
+              "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
+              "optional": true,
+              "on_by_default": true,
+              "ignore_auto_referencing": [
+                "*"
+              ],
+              "input_mapping": [
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": true
+                },
+                {
+                  "dependency_input": "region",
+                  "version_input": "region",
+                  "reference_version": true
+                }
+              ]
             }
           ]
         }
