@@ -176,8 +176,7 @@
                 },
                 {
                   "dependency_input": "prefix",
-                  "version_input": "prefix",
-                  "reference_version": true
+                  "value": "__NULL__"
                 },
                 {
                   "version_input": "use_existing_resource_group",
