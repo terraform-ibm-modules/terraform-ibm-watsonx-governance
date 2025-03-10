@@ -82,9 +82,7 @@
           },
           "configuration": [
             {
-              "key": "ibmcloud_api_key",
-              "required": true,
-              "type": "password"
+              "key": "ibmcloud_api_key"
             },
             {
               "key": "prefix",
