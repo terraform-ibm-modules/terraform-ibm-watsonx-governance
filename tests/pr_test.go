@@ -155,7 +155,7 @@ func TestRunStandardSolution(t *testing.T) {
 	})
 
 	options.TerraformVars = map[string]interface{}{
-		"watsonx_governance_plan":      "essentials",
+		"service_plan":                 "essentials",
 		"existing_resource_group_name": resourceGroup,
 		"provider_visibility":          "public",
 		"prefix":                       options.Prefix,
@@ -178,7 +178,7 @@ func TestRunStandardUpgradeSolution(t *testing.T) {
 	})
 
 	options.TerraformVars = map[string]interface{}{
-		"watsonx_governance_plan":      "essentials",
+		"service_plan":                 "essentials",
 		"existing_resource_group_name": resourceGroup,
 		"provider_visibility":          "public",
 		"prefix":                       options.Prefix,

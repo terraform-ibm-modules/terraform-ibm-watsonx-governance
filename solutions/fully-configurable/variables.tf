@@ -27,7 +27,7 @@ variable "existing_resource_group_name" {
 variable "prefix" {
   type        = string
   nullable    = true
-  description = "The prefix to add to all resources that this solution creates. To not use any prefix value, you can set this value to `null` or an empty string."
+  description = "The prefix to add to all resources that this solution creates (e.g `prod`, `test`, `dev`). To not use any prefix value, you can set this value to `null` or an empty string.`"
 }
 
 variable "watsonx_governance_instance_name" {
@@ -42,7 +42,7 @@ variable "region" {
   default     = "us-south"
 }
 
-variable "watsonx_governance_plan" {
+variable "service_plan" {
   type        = string
   description = "The plan that is required to provision the watsonx.governance instance. Possible values are: lite, essentials.[Learn more](https://dataplatform.cloud.ibm.com/docs/content/wsj/model/wos-plan-options.html?context=wx&audience=wdp)."
   default     = "essentials"

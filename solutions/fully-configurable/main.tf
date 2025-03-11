@@ -3,7 +3,7 @@
 #######################################################################################################################
 
 locals {
-  prefix = var.prefix != null ? (var.prefix != "" ? var.prefix : null) : null
+  prefix = var.prefix != null ? trimspace(var.prefix) != "" ? "${var.prefix}-" : "" : ""
 }
 
 #######################################################################################################################
@@ -23,9 +23,9 @@ module "resource_group" {
 module "watsonx_governance" {
   source                  = "../../"
   region                  = var.region
-  plan                    = var.watsonx_governance_plan
+  plan                    = var.service_plan
   resource_group_id       = module.resource_group.resource_group_id
-  watsonx_governance_name = try("${local.prefix}-${var.watsonx_governance_instance_name}", var.watsonx_governance_instance_name)
+  watsonx_governance_name = var.watsonx_governance_instance_name != null ? "${local.prefix}${var.watsonx_governance_instance_name}" : null
   access_tags             = var.access_tags
   resource_tags           = var.resource_tags
 }
