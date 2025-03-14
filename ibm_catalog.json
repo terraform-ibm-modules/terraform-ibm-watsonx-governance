@@ -82,9 +82,7 @@
           },
           "configuration": [
             {
-              "key": "ibmcloud_api_key",
-              "required": true,
-              "type": "password"
+              "key": "ibmcloud_api_key"
             },
             {
               "key": "prefix",
@@ -123,23 +121,6 @@
               }
             },
             {
-              "key": "name"
-            },
-            {
-              "key": "plan",
-              "default_value": "lite",
-              "options": [
-                {
-                  "displayname": "Lite",
-                  "value": "lite"
-                },
-                {
-                  "displayname": "Essentials",
-                  "value": "essentials"
-                }
-              ]
-            },
-            {
               "key": "provider_visibility",
               "options": [
                 {
@@ -157,10 +138,41 @@
               ]
             },
             {
-              "key": "resource_tags"
+              "key": "watsonx_governance_instance_name"
             },
             {
-              "key": "access_tags"
+              "key": "service_plan",
+              "default_value": "lite",
+              "options": [
+                {
+                  "displayname": "Lite",
+                  "value": "lite"
+                },
+                {
+                  "displayname": "Essentials",
+                  "value": "essentials"
+                }
+              ]
+            },
+            {
+              "key": "resource_tags",
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "key": "access_tags",
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
             }
           ],
           "dependencies": [
