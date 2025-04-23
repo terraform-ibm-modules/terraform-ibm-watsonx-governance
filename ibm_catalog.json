@@ -179,7 +179,7 @@
               "name": "deploy-arch-ibm-account-infra-base",
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "flavors": [
-                "standard"
+                "resource-group-only"
               ],
               "id": "63641cec-6093-4b4f-b7b0-98d2f4185cd6-global",
               "ignore_auto_referencing": [
@@ -187,8 +187,17 @@
               ],
               "input_mapping": [
                 {
-                  "dependency_output": "security_resource_group_name",
+                  "dependency_output": "global_resource_group_name",
                   "version_input": "existing_resource_group_name"
+                },
+                {
+                  "dependency_input": "global_resource_group_name",
+                  "value": "security-rg"
+                },
+                {
+                  "dependency_input": "provider_visibility",
+                  "version_input": "provider_visibility",
+                  "reference_version": true
                 },
                 {
                   "dependency_input": "prefix",
@@ -198,7 +207,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "^v1.18.0"
+              "version": "^v2.0.6"
             },
             {
               "name": "testing-deploy-arch-ibm-observability",
