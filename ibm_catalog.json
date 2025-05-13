@@ -62,7 +62,6 @@
             }
           ],
           "architecture": {
-            "descriptions": "This architecture creates an instance of IBM watsonx.governance.",
             "features": [
               {
                 "title": " Creates an instance of watsonx.governance",
