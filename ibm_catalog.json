@@ -28,8 +28,8 @@
       "provider_name": "IBM",
       "features": [
         {
-          "title": "Creates an instance of IBM watsonx.governance",
-          "description": "Creates and configures an IBM watsonx.governance instance."
+          "title": "Optional Integrations",
+          "description": "Optional dependencies include Observability and Account Configuration."
         }
       ],
       "flavors": [
@@ -64,8 +64,12 @@
           "architecture": {
             "features": [
               {
-                "title": " Creates an instance of watsonx.governance",
-                "description": "This architecture creates an instance of IBM watsonx.governance. It accepts or creates a resource group."
+                "title": "Observability",
+                "description": "Creates Observability resources, including Cloud Logs, Activity Tracker, and Monitoring."
+              },
+              {
+                "title": "Account Configuration",
+                "description": "Creates and configure the foundational components of an IBM Cloud account."
               }
             ],
             "diagrams": [
@@ -108,7 +112,9 @@
             },
             {
               "key": "existing_resource_group_name",
+              "display_name": "resource_group",
               "required": true,
+              "default_value": "Default",
               "custom_config": {
                 "type": "resource_group",
                 "grouping": "deployment",
@@ -133,7 +139,8 @@
                   "displayname": "public-and-private",
                   "value": "public-and-private"
                 }
-              ]
+              ],
+              "hidden": true
             },
             {
               "key": "watsonx_governance_instance_name"
@@ -176,9 +183,11 @@
           "dependencies": [
             {
               "name": "deploy-arch-ibm-account-infra-base",
+              "description": "Cloud automation for Account Configuration organizes your IBM Cloud account with a ready-made set of resource groups by default—and, when you enable the \"with Account Settings\" option, it also applies baseline security and governance settings.",
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "flavors": [
-                "resource-group-only"
+                "resource-group-only",
+                "resource-groups-with-account-settings"
               ],
               "id": "63641cec-6093-4b4f-b7b0-98d2f4185cd6-global",
               "ignore_auto_referencing": [
@@ -186,11 +195,11 @@
               ],
               "input_mapping": [
                 {
-                  "dependency_output": "global_resource_group_name",
+                  "dependency_output": "security_resource_group_name",
                   "version_input": "existing_resource_group_name"
                 },
                 {
-                  "dependency_input": "global_resource_group_name",
+                  "dependency_input": "security_resource_group_name",
                   "value": "security-rg"
                 },
                 {
@@ -206,12 +215,12 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "^v2.0.6"
+              "version": "v2.2.3"
             },
             {
               "name": "testing-deploy-arch-ibm-observability",
               "id": "daf2cf91-2384-4205-b7f4-621299a4896d-global",
-              "version": "^1.3.0",
+              "version": "v1.5.0",
               "flavors": [
                 "standard"
               ],
@@ -235,7 +244,8 @@
               ]
             }
           ],
-          "dependency_version_2": true
+          "dependency_version_2": true,
+          "terraform_version": "1.10.5"
         }
       ]
     }
