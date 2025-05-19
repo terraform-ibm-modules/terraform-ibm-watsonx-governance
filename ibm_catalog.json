@@ -59,6 +59,37 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "aiopenscale"
+            },
+            {
+              "service_name": "atracker",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "[Optional] Required if you are consuming Observability DA which creates Activity Tracker (AT) event routing instance."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "sysdig-monitor",
+              "notes": "[Optional] Required if you are consuming Observability DA which sets up Cloud monitoring."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "logs",
+              "notes": "[Optional] Required if you are consuming Observability DA which sets up Cloud logs."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "service_name": "iam-identity",
+              "notes": "[Optional] Required if Cloud automation for account configuration is enabled."
             }
           ],
           "architecture": {
@@ -69,7 +100,7 @@
               },
               {
                 "title": "Account Configuration",
-                "description": "Creates and configure the foundational components of an IBM Cloud account."
+                "description": "Create and configure the foundational components of an IBM Cloud account."
               }
             ],
             "diagrams": [
@@ -195,11 +226,11 @@
               ],
               "input_mapping": [
                 {
-                  "dependency_output": "security_resource_group_name",
+                  "dependency_output": "single_resource_group_name",
                   "version_input": "existing_resource_group_name"
                 },
                 {
-                  "dependency_input": "security_resource_group_name",
+                  "dependency_input": "single_resource_group_name",
                   "value": "security-rg"
                 },
                 {
@@ -219,6 +250,7 @@
             },
             {
               "name": "testing-deploy-arch-ibm-observability",
+              "description": "Cloud Automation for Observability provisions and configures IBM Cloud Monitoring, Activity Tracker, and Log Analysis services.",
               "id": "daf2cf91-2384-4205-b7f4-621299a4896d-global",
               "version": "v1.5.0",
               "flavors": [
