@@ -52,7 +52,7 @@
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "service_name": "all-account-management-services"
+              "service_name": "Account Management Services"
             },
             {
               "role_crns": [
