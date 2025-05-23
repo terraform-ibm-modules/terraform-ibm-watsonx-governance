@@ -2,7 +2,7 @@
   "products": [
     {
       "name": "deploy-arch-ibm-watsonx-governance",
-      "label": "[Add-ons Beta] Cloud automation for watsonx.governance",
+      "label": "Cloud automation for watsonx.governance",
       "product_kind": "solution",
       "tags": [
         "ibm_created",
@@ -22,14 +22,14 @@
         "ai"
       ],
       "short_description": "Creates and configures an instance of IBM watsonx.governance.",
-      "long_description": "This architecture supports creating and configuring an instance of watsonx.governance.",
+      "long_description": "IBM watsonx.governance™ seamlessly integrates with your existing systems to automate and accelerate responsible AI workflows to help save time, reduce costs and comply with regulations.This Deployable Architecture supports creating and configuring an instance of watsonx.governance.[Learn more.](https://www.ibm.com/products/watsonx-governance)",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/blob/main/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/images/watsonx-governance.svg",
       "provider_name": "IBM",
       "features": [
         {
           "title": "Optional Integrations",
-          "description": "Optional dependencies include Observability and Account Configuration."
+          "description": "This solution can be integrated with [IBM Cloud Observability](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-observability-a3137d28-79e0-479d-8a24-758ebd5a0eab-global) that supports configuring resources for logging, monitoring and activity tracking."
         }
       ],
       "flavors": [
@@ -52,7 +52,8 @@
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "service_name": "Account Management Services"
+              "service_name": "All Account Management services",
+              "notes": "[Optional] Required when setting up foundational IBM Cloud account components such as IAM settings, trusted profiles, access groups, and resource groups."
             },
             {
               "role_crns": [
@@ -97,10 +98,6 @@
               {
                 "title": "Observability",
                 "description": "Creates Observability resources, including Cloud Logs, Activity Tracker, and Monitoring."
-              },
-              {
-                "title": "Account Configuration",
-                "description": "Create and configure the foundational components of an IBM Cloud account."
               }
             ],
             "diagrams": [
@@ -110,7 +107,7 @@
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/reference-architecture/deployable-architecture-watsonx-governance.svg",
                   "type": "image/svg+xml"
                 },
-                "description": "This architecture supports creating and configuring an instance of watsonx.governance."
+                "description": "**watsonx governance** <br/> <br/><b>Description</b> <br/> This architecture supports creating and configuring an instance of watsonx.governance.. Optional services used are:<br/> - Account Configuration <br/> - Observability. <br/><br/> **Account Configuration**: <br/> This architecture supports creating and configuring the foundational components of an IBM Cloud account. This includes IAM account settings, a trusted profile and associated access groups, and the resource groups in which all resources are provisioned. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-account-infrastructure-base/tree/main/docs/about.md)<br/><br/> **Observability**: <br/> This architecture supports configuring IBM Cloud Observability resources for logging, monitoring, and activity tracking.<br/>"
               }
             ]
           },
@@ -144,7 +141,6 @@
             {
               "key": "existing_resource_group_name",
               "display_name": "resource_group",
-              "default_value": "Default",
               "custom_config": {
                 "type": "resource_group",
                 "grouping": "deployment",
@@ -225,12 +221,8 @@
               ],
               "input_mapping": [
                 {
-                  "dependency_output": "single_resource_group_name",
+                  "dependency_output": "security_resource_group_name",
                   "version_input": "existing_resource_group_name"
-                },
-                {
-                  "dependency_input": "single_resource_group_name",
-                  "value": "security-rg"
                 },
                 {
                   "dependency_input": "provider_visibility",
@@ -245,13 +237,13 @@
               ],
               "optional": true,
               "on_by_default": false,
-              "version": "v2.2.3"
+              "version": "v3.0.7"
             },
             {
               "name": "testing-deploy-arch-ibm-observability",
               "description": "Cloud Automation for Observability provisions and configures IBM Cloud Monitoring, Activity Tracker, and Log Analysis services.",
               "id": "daf2cf91-2384-4205-b7f4-621299a4896d-global",
-              "version": "v1.5.0",
+              "version": "v3.0.3",
               "flavors": [
                 "standard"
               ],
