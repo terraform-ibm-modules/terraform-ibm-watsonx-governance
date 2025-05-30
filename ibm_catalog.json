@@ -64,7 +64,31 @@
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "service_name": "aiopenscale"
+              "service_name": "aiopenscale",
+              "notes": "Required for creating a new instance of watsonx.governance."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "sysdig-monitor",
+              "notes": "[Optional] Required if you are consuming the Observability deployable architecture which sets up Cloud Monitoring."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "logs",
+              "notes": "[Optional] Required if you are consuming the Observability deployable architecture which sets up Cloud Logs."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "service_name": "iam-identity",
+              "notes": "[Optional] Required if Cloud automation for account configuration is enabled."
             }
           ],
           "architecture": {
