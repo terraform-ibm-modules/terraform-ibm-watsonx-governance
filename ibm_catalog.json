@@ -22,18 +22,18 @@
         "ai"
       ],
       "short_description": "Creates and configures an instance of IBM watsonx.governance.",
-      "long_description": "IBM watsonx.governance seamlessly integrates with your existing systems to automate and accelerate responsible AI workflows to help save time, reduce costs and comply with regulations. This Deployable Architecture supports creating and configuring an instance of watsonx.governance. For more details refer [here](https://www.ibm.com/docs/en/watsonx/w-and-w/2.1.0?topic=overview-watsonx#watsonxgovernance).",
+      "long_description": "IBM watsonx.governance seamlessly integrates with your existing systems to automate and accelerate responsible AI workflows to help save time, reduce costs and comply with regulations. This deployable architecture supports creating and configuring an instance of watsonx.governance. For more details refer [here](https://www.ibm.com/docs/en/watsonx/w-and-w/2.1.0?topic=overview-watsonx#watsonxgovernance).",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/blob/main/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/images/watsonx-governance.svg",
       "provider_name": "IBM",
       "features": [
         {
           "title": "watsonx.governance",
-          "description": "Provision and configures an IBM watsonx.governance instance. For more details on [watsonx.governance](https://www.ibm.com/products/watsonx-governance) instances."
+          "description": "Configures an IBM watsonx.governance instance. [Learn more](https://www.ibm.com/products/watsonx-governance)."
         },
         {
           "title": "Optional Integrations",
-          "description": "This solution can be integrated with [IBM Cloud Observability](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-observability-a3137d28-79e0-479d-8a24-758ebd5a0eab-global) that supports configuring resources for logging, monitoring and activity tracker event routing."
+          "description": "This solution can be integrated with [Cloud automation for Observability](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-observability-a3137d28-79e0-479d-8a24-758ebd5a0eab-global) that supports configuring resources for logging, monitoring and activity tracker event routing."
         }
       ],
       "support_details": "This product is in the community registry, as such support is handled through the originated repo. If you experience issues kindly open an issue [here](https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/issues). Please note that this product is not currently supported through the IBM Cloud Support Center.",
@@ -114,7 +114,6 @@
             {
               "key": "existing_resource_group_name",
               "display_name": "resource_group",
-              "default_value": "Default",
               "custom_config": {
                 "type": "resource_group",
                 "grouping": "deployment",
@@ -129,8 +128,7 @@
               "hidden": true
             },
             {
-              "key": "watsonx_governance_instance_name",
-              "required": true
+              "key": "watsonx_governance_instance_name"
             },
             {
               "key": "service_plan",
