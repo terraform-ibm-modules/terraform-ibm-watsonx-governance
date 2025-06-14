@@ -21,7 +21,7 @@ This architecture creates an instance of IBM watsonx.governance and supports pro
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | terraform-ibm-modules/resource-group/ibm | 1.2.0 |
+| <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | terraform-ibm-modules/resource-group/ibm | 1.2.1 |
 | <a name="module_watsonx_governance"></a> [watsonx\_governance](#module\_watsonx\_governance) | ../../ | n/a |
 
 ### Resources
