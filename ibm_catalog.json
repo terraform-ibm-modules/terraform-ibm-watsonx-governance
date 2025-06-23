@@ -70,6 +70,13 @@
             },
             {
               "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Viewer"
+              ],
+              "service_name": "Resource group only",
+              "notes": "Viewer access is required in the resource group you want to provision in."
+            },
+            {
+              "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
@@ -83,6 +90,38 @@
               ],
               "service_name": "logs",
               "notes": "[Optional] Required if you are consuming the Observability deployable architecture which sets up Cloud Logs."
+            },
+            {
+              "service_name": "cloud-object-storage",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "[Optional] Required if you are consuming the Observability deployable architecture."
+            },
+            {
+              "service_name": "hs-crypto",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "[Optional] Required if KMS encryption is enabled and IBM Hyper Protect Crypto Services is used to encrypt the Object Storage bucket."
+            },
+            {
+              "service_name": "kms",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "[Optional] Required if KMS encryption is enabled and Key protect is used for encryption of Object Storage bucket."
+            },
+            {
+              "service_name": "atracker",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "[Optional] Required if you are consuming Observability deployable architecture which sets up Activity Tracker Event Routing."
             },
             {
               "role_crns": [
