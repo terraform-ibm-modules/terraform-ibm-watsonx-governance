@@ -191,3 +191,59 @@ func TestRunStandardUpgradeSolution(t *testing.T) {
 		assert.NotNil(t, output, "Expected some output")
 	}
 }
+
+func TestDefaultConfiguration(t *testing.T) {
+	t.Parallel()
+	sharedInfoSvc, _ = cloudinfo.NewCloudInfoServiceFromEnv("TF_VAR_ibmcloud_api_key", cloudinfo.CloudInfoServiceOptions{})
+	prefix := "wxgvdeft"
+	uniqueResourceGroup := generateUniqueResourceGroupName(prefix)
+
+	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
+		Testing:       t,
+		Prefix:        prefix,
+		ResourceGroup: uniqueResourceGroup,
+		QuietMode:     true, // Suppress logs except on failure
+	})
+
+	options.AddonConfig = cloudinfo.NewAddonConfigTerraform(
+		options.Prefix,
+		"deploy-arch-ibm-watsonx-governance",
+		"fully-configurable",
+		map[string]interface{}{
+			"prefix":                       prefix,
+			"existing_resource_group_name": uniqueResourceGroup,
+		},
+	)
+
+	err := sharedInfoSvc.WithNewResourceGroup(uniqueResourceGroup, func() error {
+		return options.RunAddonTest()
+	})
+	require.NoError(t, err)
+}
+
+// TestDependencyPermutations runs dependency permutations for watsonx governance and all its dependencies
+func TestDependencyPermutations(t *testing.T) {
+	t.Skip("Skipping dependency permutations")
+	t.Parallel()
+
+	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
+		Testing: t,
+		Prefix:  "wxgv-perm",
+		AddonConfig: cloudinfo.AddonConfig{
+			OfferingName:   "deploy-arch-ibm-watsonx-governance",
+			OfferingFlavor: "fully-configurable",
+			Inputs: map[string]interface{}{
+				"prefix":                       "wxgv-perm",
+				"existing_resource_group_name": resourceGroup,
+			},
+		},
+	})
+
+	err := options.RunAddonPermutationTest()
+	assert.NoError(t, err, "Dependency permutation test should not fail")
+}
+
+func generateUniqueResourceGroupName(baseName string) string {
+	id := uuid.New().String()[:8]
+	return fmt.Sprintf("%s-%s", baseName, id)
+}
