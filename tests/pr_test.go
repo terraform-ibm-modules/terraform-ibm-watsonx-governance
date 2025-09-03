@@ -19,6 +19,7 @@ import (
 
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/cloudinfo"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/common"
+	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testaddons"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testhelper"
 )
 
@@ -212,7 +213,7 @@ func TestDefaultConfiguration(t *testing.T) {
 		},
 	)
 
-	err := sharedInfoSvc.WithNewResourceGroup(uniqueResourceGroup, func() error {
+	err := sharedInfoSvc.WithNewResourceGroup(resourceGroup, func() error {
 		return options.RunAddonTest()
 	})
 	require.NoError(t, err)
