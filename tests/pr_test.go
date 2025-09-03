@@ -213,9 +213,7 @@ func TestDefaultConfiguration(t *testing.T) {
 		},
 	)
 
-	err := sharedInfoSvc.WithNewResourceGroup(resourceGroup, func() error {
-		return options.RunAddonTest()
-	})
+	err := options.RunAddonTest()
 	require.NoError(t, err)
 }
 
