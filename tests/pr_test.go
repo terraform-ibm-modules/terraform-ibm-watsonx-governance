@@ -36,7 +36,7 @@ var permanentResources map[string]interface{}
 var sharedInfoSvc *cloudinfo.CloudInfoService
 var validRegions = []string{
 	"au-syd",
-	"us-south",
+	"eu-gb",
 	"eu-de",
 }
 
@@ -194,6 +194,7 @@ func TestRunStandardUpgradeSolution(t *testing.T) {
 }
 
 func TestDefaultConfiguration(t *testing.T) {
+	t.Parallel()
 
 	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
 		Testing:       t,
