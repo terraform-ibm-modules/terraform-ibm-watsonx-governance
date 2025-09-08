@@ -181,6 +181,18 @@
                 {
                   "displayname": "Sydney (au-syd)",
                   "value": "au-syd"
+                },
+                {
+                  "displayname": "London (eu-gb)",
+                  "value": "eu-gb"
+                },
+                {
+                  "displayname": "Tokyo (jp-tok)",
+                  "value": "jp-tok"
+                },
+                {
+                  "displayname": "Toronto (ca-tor)",
+                  "value": "ca-tor"
                 }
               ]
             },
