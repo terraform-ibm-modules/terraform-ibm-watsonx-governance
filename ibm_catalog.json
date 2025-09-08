@@ -181,6 +181,10 @@
                 {
                   "displayname": "Sydney (au-syd)",
                   "value": "au-syd"
+                },
+                {
+                  "displayname": "London (eu-gb)",
+                  "value": "eu-gb"
                 }
               ]
             },
