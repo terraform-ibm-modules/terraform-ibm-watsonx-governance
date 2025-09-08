@@ -194,7 +194,6 @@ func TestRunStandardUpgradeSolution(t *testing.T) {
 }
 
 func TestDefaultConfiguration(t *testing.T) {
-	t.Parallel()
 
 	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
 		Testing:       t,
