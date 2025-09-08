@@ -38,6 +38,8 @@ var validRegions = []string{
 	"au-syd",
 	"eu-gb",
 	"eu-de",
+	"ca-tor",
+	"jp-tok",
 }
 
 func TestMain(m *testing.M) {
