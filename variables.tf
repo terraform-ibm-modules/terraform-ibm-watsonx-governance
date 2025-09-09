@@ -22,8 +22,11 @@ variable "region" {
       var.region == "au-syd",
       var.region == "eu-de",
       var.region == "us-south",
+      var.region == "eu-gb",
+      var.region == "ca-tor",
+      var.region == "jp-tok",
     ])
-    error_message = "Region must be specified and set to one of the possible values ('eu-de', 'us-south', or 'au-syd') when an instance is provisioned."
+    error_message = "Region must be specified and set to one of the possible values ('eu-de', 'jp-tok', 'ca-tor', 'eu-gb', 'us-south', or 'au-syd') when an instance is provisioned."
   }
 }
 
