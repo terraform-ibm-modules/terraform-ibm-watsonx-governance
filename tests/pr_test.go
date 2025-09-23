@@ -212,6 +212,7 @@ func TestDefaultConfiguration(t *testing.T) {
 		map[string]interface{}{
 			"prefix":                       options.Prefix,
 			"existing_resource_group_name": resourceGroup,
+			"region":                       validRegions[rand.Intn(len(validRegions))],
 		},
 	)
 
@@ -233,6 +234,7 @@ func TestDependencyPermutations(t *testing.T) {
 			Inputs: map[string]interface{}{
 				"prefix":                       "wxgv-perm",
 				"existing_resource_group_name": resourceGroup,
+				"region":                       validRegions[rand.Intn(len(validRegions))],
 			},
 		},
 	})
