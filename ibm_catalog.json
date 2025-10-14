@@ -159,7 +159,7 @@
               {
                 "diagram": {
                   "caption": "watsonx.governance on IBM Cloud",
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/reference-architecture/deployable-architecture-watsonx-governance.svg",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-watsonx-governance/main/reference-architectures/deployable-architecture-watsonx-governance.svg",
                   "type": "image/svg+xml"
                 },
                 "description": "This deployable architecture provisions a watsonx.governance instance on IBM Cloud, with optional tools to support enterprise-grade requirements.<br><br>Optionally, you can deploy IBM Cloud observability resources. Cloud automation for Observability provides robust monitoring and logging capabilities to deliver deep operational insights into your watsonx.governance deployment. You can use IBM Cloud Activity Tracker Event Routing to monitor how users and applications interact with watsonx.governance, supporting compliance and auditability. Enable IBM Cloud Logs to collect, view, and analyze platform logs related to key watsonx.governance components. While IBM Cloud Monitoring captures essential metrics such as CPU and memory usage, helping you proactively monitor system performance and resource consumption."
@@ -331,7 +331,7 @@
               ],
               "optional": true,
               "on_by_default": false,
-              "version": "v3.0.7"
+              "version": "v3.0.23"
             },
             {
               "name": "deploy-arch-ibm-cloud-monitoring",
@@ -364,7 +364,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.6.4"
+              "version": "v1.7.2"
             },
             {
               "name": "deploy-arch-ibm-cloud-logs",
@@ -393,7 +393,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.6.11"
+              "version": "v1.6.28"
             },
             {
               "name": "deploy-arch-ibm-activity-tracker",
@@ -417,7 +417,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.2.25"
+              "version": "v1.2.34"
             },
             {
               "name": "deploy-arch-ibm-scc-workload-protection",
@@ -441,7 +441,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.11.4"
+              "version": "v1.12.3"
             }
           ],
           "dependency_version_2": true,
