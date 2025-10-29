@@ -53,15 +53,6 @@
           "index": 1,
           "working_directory": "solutions/fully-configurable",
           "install_type": "fullstack",
-          "compliance": {
-            "authority": "scc-v3",
-            "profiles": [
-              {
-                "profile_name": "AI Security Guardrails 2.0",
-                "profile_version": "1.1.0"
-              }
-            ]
-          },
           "iam_permissions": [
             {
               "role_crns": [
