@@ -58,6 +58,6 @@ output "next_step_secondary_label" {
 }
 
 output "next_step_secondary_url" {
-  value       = "https://dataplatform.cloud.ibm.com/docs/content/svc-welcome/aiopenscale.html?context=wx&audience=wdp"
+  value       = "https://www.ibm.com/docs/en/watsonx/saas?topic=governing-ai"
   description = "Secondary URL"
 }
