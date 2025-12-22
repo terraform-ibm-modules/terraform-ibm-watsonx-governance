@@ -57,6 +57,7 @@
           "index": 1,
           "working_directory": "solutions/fully-configurable",
           "install_type": "fullstack",
+          "short_description": "Ideal for users who want to automate the deployment and setup of the IBM watsonx governance.",
           "iam_permissions": [
             {
               "role_crns": [
