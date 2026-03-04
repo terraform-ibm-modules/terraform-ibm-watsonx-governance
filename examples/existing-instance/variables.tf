@@ -15,6 +15,6 @@ variable "existing_watsonx_governance_instance_crn" {
 
 variable "access_tags" {
   type        = list(string)
-  description = "Optional list of access management tags to add to the watsonx.governance instance."
+  description = "Optional list of access management tags to add to the watsonx.governance instance"
   default     = []
 }
