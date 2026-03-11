@@ -43,6 +43,12 @@ resource "ibm_resource_instance" "watsonx_governance_instance" {
 # Attach Access Tags
 ########################################################################################################################
 
+# Lookup existing IAM access tags from `var.access_tags` if provided.
+data "ibm_iam_access_tag" "access_tag" { # tflint-ignore: terraform_unused_declarations
+  for_each = length(var.access_tags) != 0 ? toset(var.access_tags) : []
+  name     = each.value
+}
+
 resource "ibm_resource_tag" "watsonx_governance_tag" {
   count       = length(var.access_tags) == 0 ? 0 : 1
   resource_id = var.existing_watsonx_governance_instance_crn != null ? var.existing_watsonx_governance_instance_crn : ibm_resource_instance.watsonx_governance_instance[0].crn
