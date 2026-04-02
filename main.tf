@@ -50,6 +50,7 @@ data "ibm_iam_access_tag" "access_tag" { # tflint-ignore: terraform_unused_decla
 }
 
 resource "ibm_resource_tag" "watsonx_governance_tag" {
+  depends_on  = [data.ibm_iam_access_tag.access_tag] # Force dependency on data source validation to ensure access_tags exist and are valid before use.
   count       = length(var.access_tags) == 0 ? 0 : 1
   resource_id = var.existing_watsonx_governance_instance_crn != null ? var.existing_watsonx_governance_instance_crn : ibm_resource_instance.watsonx_governance_instance[0].crn
   tags        = var.access_tags
