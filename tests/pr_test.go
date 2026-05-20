@@ -2,6 +2,7 @@
 package test
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"os"
@@ -89,9 +90,9 @@ func TestRunBasicExample(t *testing.T) {
 func TestRunExistingResourcesExample(t *testing.T) {
 
 	// Provision watsonx.governance instance
-	prefix := fmt.Sprintf("ex-gov-%s", strings.ToLower(random.UniqueId()))
+	prefix := fmt.Sprintf("ex-gov-%s", strings.ToLower(random.UniqueID()))
 	realTerraformDir := ".."
-	tempTerraformDir, _ := files.CopyTerraformFolderToTemp(realTerraformDir, fmt.Sprintf(prefix+"-%s", strings.ToLower(random.UniqueId())))
+	tempTerraformDir, _ := files.CopyTerraformFolderToTemp(realTerraformDir, fmt.Sprintf(prefix+"-%s", strings.ToLower(random.UniqueID())))
 	tags := common.GetTagsFromTravis()
 
 	// Verify ibmcloud_api_key variable is set
@@ -114,12 +115,12 @@ func TestRunExistingResourcesExample(t *testing.T) {
 		Upgrade: true,
 	})
 
-	terraform.WorkspaceSelectOrNew(t, existingTerraformOptions, prefix)
-	_, existErr := terraform.InitAndApplyE(t, existingTerraformOptions)
+	terraform.WorkspaceSelectOrNewContext(t, context.Background(), existingTerraformOptions, prefix)
+	_, existErr := terraform.InitAndApplyContextE(t, context.Background(), existingTerraformOptions)
 	if existErr != nil {
 		assert.True(t, existErr == nil, "Init and Apply of temp existing resource failed")
 	} else {
-		outputs, err := terraform.OutputAllE(t, existingTerraformOptions)
+		outputs, err := terraform.OutputAllContextE(t, context.Background(), existingTerraformOptions)
 		require.NoError(t, err, "Failed to retrieve Terraform outputs")
 		expectedOutputs := []string{"account_id", "id", "crn", "guid", "name", "plan_id", "dashboard_url"}
 		_, tfOutputsErr := testhelper.ValidateTerraformOutputs(outputs, expectedOutputs...)
@@ -130,7 +131,7 @@ func TestRunExistingResourcesExample(t *testing.T) {
 				// Do not hard fail the test if the implicit destroy steps fail to allow a full destroy of resource to occur
 				ImplicitRequired: false,
 				TerraformVars: map[string]interface{}{
-					"existing_watsonx_governance_instance_crn": terraform.Output(t, existingTerraformOptions, "crn"),
+					"existing_watsonx_governance_instance_crn": terraform.OutputContext(t, context.Background(), existingTerraformOptions, "crn"),
 				},
 			})
 
@@ -147,8 +148,8 @@ func TestRunExistingResourcesExample(t *testing.T) {
 		fmt.Println("Terratest failed. Debug the test and delete resources manually.")
 	} else {
 		logger.Log(t, "START: Destroy (existing resources)")
-		terraform.Destroy(t, existingTerraformOptions)
-		terraform.WorkspaceDelete(t, existingTerraformOptions, prefix)
+		terraform.DestroyContext(t, context.Background(), existingTerraformOptions)
+		terraform.WorkspaceDeleteContext(t, context.Background(), existingTerraformOptions, prefix)
 		logger.Log(t, "END: Destroy (existing resources)")
 	}
 }
