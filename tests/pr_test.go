@@ -84,13 +84,13 @@ func TestMain(m *testing.M) {
 	if len(availableRegions) < expectedAvailableRegions {
 		log.Printf("Warning: Region list returned by the method (%v) has less than %d expected valid regions hence some tests will run on duplicate regions.", availableRegions, expectedAvailableRegions)
 	}
-	lastIdx := len(availableRegions) - 1
-	for i, rp := range regionVars {
-		idx := i
-		if idx > lastIdx {
-			idx = lastIdx
+	lastRegionIdx := len(availableRegions) - 1
+	for regionIdx, regionPtr := range regionVars {
+		if regionIdx > lastRegionIdx {
+			*regionPtr = availableRegions[lastRegionIdx]
+		} else {
+			*regionPtr = availableRegions[regionIdx]
 		}
-		*rp = availableRegions[idx]
 	}
 	os.Exit(m.Run())
 }
