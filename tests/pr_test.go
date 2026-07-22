@@ -35,16 +35,23 @@ const terraformVersion = "terraform_v1.12.2" // This should match the version in
 // Define a struct with fields that match the structure of the YAML data
 const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-resources.yaml"
 
-var permanentResources map[string]interface{}
-var sharedInfoSvc *cloudinfo.CloudInfoService
-var validRegions = []string{
-	"au-syd",
-	"eu-gb",
-	"us-south",
-	"eu-de",
-	"ca-tor",
-	"jp-tok",
-}
+var (
+	permanentResources map[string]interface{}
+	sharedInfoSvc      *cloudinfo.CloudInfoService
+	validRegions       = []string{
+		"au-syd",
+		"eu-gb",
+		"us-south",
+		"eu-de",
+		"ca-tor",
+		"jp-tok",
+	}
+	region1 string // used by TestRunFullyConfigurableSolutionSchematics
+	region2 string // used by TestRunFullyConfigurableUpgradeSolutionSchematics
+	region3 string // used by TestRunExistingResourcesExample
+	region4 string // used by TestRunBasicExample
+	region5 string // used by TestDefaultConfiguration
+)
 
 func TestMain(m *testing.M) {
 	var err error
@@ -52,12 +59,39 @@ func TestMain(m *testing.M) {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	// Read the YAML file content
 	permanentResources, err = common.LoadMapFromYaml(yamlLocation)
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	// Get the list of regions that have no existing watsonx governance instance.
+	// Only one instance is allowed per region, so these are the regions safe for provisioning.
+	availableRegions, err := sharedInfoSvc.GetRegionWithoutWatsonXGovernance(validRegions...)
+	if err != nil {
+		log.Fatalf("failed to get regions without watsonx governance: %v", err)
+	}
+	if len(availableRegions) == 0 {
+		log.Fatal("no available regions returned — all valid regions already have a watsonx governance instance")
+	}
+	fmt.Println("availableRegions:", availableRegions)
+
+	// Assign a region to each test from the available list in order.
+	// Once the list is exhausted the last available region is reused for all remaining tests.
+	regionVars := []*string{&region1, &region2, &region3, &region4, &region5}
+	expectedAvailableRegions := len(regionVars)
+	if len(availableRegions) < expectedAvailableRegions {
+		log.Printf("Warning: Region list returned by the method (%v) has less than %d expected valid regions hence some tests will run on duplicate regions.", availableRegions, expectedAvailableRegions)
+	}
+	lastRegionIdx := len(availableRegions) - 1
+	for regionIdx, regionPtr := range regionVars {
+		if regionIdx > lastRegionIdx {
+			*regionPtr = availableRegions[lastRegionIdx]
+		} else {
+			*regionPtr = availableRegions[regionIdx]
+		}
+	}
 	os.Exit(m.Run())
 }
 
@@ -70,7 +104,7 @@ func setupOptions(t *testing.T, prefix string, exampleDir string) *testhelper.Te
 	})
 	options.TerraformVars = map[string]interface{}{
 		"access_tags":    permanentResources["accessTags"],
-		"region":         validRegions[common.CryptoIntn(len(validRegions))],
+		"region":         region4,
 		"prefix":         options.Prefix,
 		"resource_group": resourceGroup,
 		"resource_tags":  options.Tags,
@@ -108,7 +142,7 @@ func TestRunExistingResourcesExample(t *testing.T) {
 			"prefix":        prefix,
 			"resource_tags": tags,
 			"access_tags":   permanentResources["accessTags"],
-			"region":        validRegions[common.CryptoIntn(len(validRegions))],
+			"region":        region3,
 		},
 		// Set Upgrade to true to ensure latest version of providers and modules are used by terratest.
 		// This is the same as setting the -upgrade=true flag with terraform.
@@ -154,11 +188,11 @@ func TestRunExistingResourcesExample(t *testing.T) {
 	}
 }
 
-func setupFullyConfigurableOptions(t *testing.T, prefix string) *testschematic.TestSchematicOptions {
+func setupFullyConfigurableOptions(t *testing.T, prefix string, region string) *testschematic.TestSchematicOptions {
 	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
 		Testing:        t,
 		TemplateFolder: fullyConfigurableSolutionTerraformDir,
-		Region:         validRegions[common.CryptoIntn(len(validRegions))],
+		Region:         region,
 		Prefix:         prefix,
 		TarIncludePatterns: []string{
 			"*.tf",
@@ -182,7 +216,7 @@ func setupFullyConfigurableOptions(t *testing.T, prefix string) *testschematic.T
 func TestRunFullyConfigurableSolutionSchematics(t *testing.T) {
 	t.Parallel()
 
-	options := setupFullyConfigurableOptions(t, "wxgo-da")
+	options := setupFullyConfigurableOptions(t, "wxgo-da", region1)
 
 	err := options.RunSchematicTest()
 	assert.Nil(t, err, "This should not have errored")
@@ -191,7 +225,7 @@ func TestRunFullyConfigurableSolutionSchematics(t *testing.T) {
 func TestRunFullyConfigurableUpgradeSolutionSchematics(t *testing.T) {
 	t.Parallel()
 
-	options := setupFullyConfigurableOptions(t, "wxgo-upg")
+	options := setupFullyConfigurableOptions(t, "wxgo-upg", region2)
 	options.CheckApplyResultForUpgrade = true
 
 	err := options.RunSchematicUpgradeTest()
@@ -215,7 +249,7 @@ func TestDefaultConfiguration(t *testing.T) {
 		"fully-configurable",
 		map[string]interface{}{
 			"existing_resource_group_name": resourceGroup,
-			"region":                       validRegions[common.CryptoIntn(len(validRegions))],
+			"region":                       region5,
 		},
 	)
 	// Disable target / route creation to prevent hitting quota in account
