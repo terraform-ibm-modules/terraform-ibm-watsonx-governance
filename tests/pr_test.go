@@ -250,6 +250,7 @@ func TestDefaultConfiguration(t *testing.T) {
 		map[string]interface{}{
 			"existing_resource_group_name": resourceGroup,
 			"region":                       region5,
+			"service_plan":                 "essentials",
 		},
 	)
 	// Disable target / route creation to prevent hitting quota in account
