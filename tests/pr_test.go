@@ -104,6 +104,7 @@ func setupOptions(t *testing.T, prefix string, exampleDir string) *testhelper.Te
 	})
 	options.TerraformVars = map[string]interface{}{
 		"access_tags":    permanentResources["accessTags"],
+		"plan":           "essentials",
 		"region":         region4,
 		"prefix":         options.Prefix,
 		"resource_group": resourceGroup,
@@ -140,6 +141,7 @@ func TestRunExistingResourcesExample(t *testing.T) {
 		TerraformDir: tempTerraformDir + "/tests/existing-resources",
 		Vars: map[string]interface{}{
 			"prefix":        prefix,
+			"plan":          "essentials",
 			"resource_tags": tags,
 			"access_tags":   permanentResources["accessTags"],
 			"region":        region3,
@@ -250,7 +252,6 @@ func TestDefaultConfiguration(t *testing.T) {
 		map[string]interface{}{
 			"existing_resource_group_name": resourceGroup,
 			"region":                       region5,
-			"service_plan":                 "essentials",
 		},
 	)
 	// Disable target / route creation to prevent hitting quota in account
