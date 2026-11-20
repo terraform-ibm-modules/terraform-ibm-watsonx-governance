@@ -41,3 +41,9 @@ variable "resource_tags" {
   description = "Optional list of tags to be added to the created resources."
   default     = []
 }
+
+variable "plan" {
+  type        = string
+  description = "The plan that is used to provision the watsonx.governance instance. Supported values: `lite`, `essentials`."
+  default     = "lite"
+}
